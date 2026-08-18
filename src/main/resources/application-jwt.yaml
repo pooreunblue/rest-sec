@@ -1,0 +1,5 @@
+app:
+  jwt:
+    # secret key -> 이걸 알아야 jwt를 원상복귀
+  secret: ${JWT_SECRET}
+  access-token-validity: 30m

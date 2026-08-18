@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: rest-sec
+  profiles:
+    active: dev, jwt
+  # jpa
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:5432/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    # dotenv
+    import: optional:file:.env[.properties]
+  # 테스트용 유저
+  security:
+    user:
+      name: user
+      password: password
+  # 타임리프
+  thymeleaf:
+    cache: false
+  # 스키마 자동반영
+  jpa:
+    hibernate:
+      ddl-auto: update

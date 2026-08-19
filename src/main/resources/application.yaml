@@ -27,3 +27,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+# jwt 등의 인증정보를 받은다음 입력해면 새로고침 후에도 유지
+springdoc:
+  swagger-ui:
+    persist-authorization: true

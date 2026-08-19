@@ -27,18 +27,17 @@ public class ChairController {
     }
     // 인증 없이는 CrossOrigin으로 직접 오픈하면 되는데
 
-    @PostMapping
-    @SecurityRequirement(name = "basicAuth")
-    public ChairEntity saveChair(
-//           @RequestBody ChairEntity chairEntity) {
-            @RequestBody ChairRequest dto) {
-        return chairService.save(dto.toEntity());
-    }
-
     @DeleteMapping
-    @SecurityRequirement(name = "basicAuth")
+    @SecurityRequirement(name = "bearerAuth")
     public void deleteChair() {
         // 403 권한 테스트용
+    }
+
+    @PostMapping
+    @SecurityRequirement(name = "bearerAuth")
+    public ChairEntity saveChair(
+            @RequestBody ChairRequest dto) {
+        return chairService.save(dto.toEntity());
     }
 
     public record ChairRequest(String name, int price) {
